@@ -560,4 +560,3 @@ if search_clicked:
                             )
 
 st.caption(f"© 富士ミネラル向けタリフ | 参照タリフ: {selected_year_name}")
-st.write("App is running")
