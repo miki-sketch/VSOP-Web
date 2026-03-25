@@ -1,0 +1,151 @@
+/* ── Hero ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroMarquee {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  padding: 4px 0;
+  z-index: 10;
+}
+
+.heroMarqueeTrack {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 8s linear infinite;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(100vw); }
+  40%  { transform: translateX(calc(50vw - 50%)); }
+  60%  { transform: translateX(calc(50vw - 50%)); }
+  100% { transform: translateX(-100%); }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 40px 20px;
+}
+
+.heroTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 16vw, 160px);
+  color: var(--gold);
+  letter-spacing: 12px;
+  line-height: 1;
+  margin: 0;
+}
+
+.heroSub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(14px, 3vw, 20px);
+  color: var(--sub);
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+.heroCatch {
+  font-size: clamp(13px, 2vw, 16px);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.5px;
+  margin: 8px 0 16px;
+}
+
+.heroNav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heroNavBtn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  padding: 10px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.heroNavBtn:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+/* ── About ── */
+.about {
+  background: #111;
+  padding: 80px 20px;
+}
+
+.aboutInner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  align-items: start;
+}
+
+.aboutTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin: 0 0 24px;
+}
+
+.aboutDesc {
+  font-size: 15px;
+  color: var(--sub);
+  line-height: 2;
+  white-space: pre-line;
+  margin: 0;
+}
+
+.aboutWidget {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .aboutInner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aboutWidget {
+    justify-content: center;
+  }
+}

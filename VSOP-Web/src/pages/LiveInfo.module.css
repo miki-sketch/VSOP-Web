@@ -1,0 +1,98 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emptyWrap {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.empty {
+  color: var(--sub);
+  font-size: 14px;
+  text-align: center;
+  padding: 80px 0;
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateX(2px);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--gold);
+  color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.cardBody {
+  padding: 20px 24px;
+}
+
+.date {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 8px;
+  padding-right: 80px;
+}
+
+.venue {
+  font-size: 13px;
+  color: var(--sub);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.venue::before {
+  content: '📍';
+  font-size: 11px;
+}
+
+.detail {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 22px;
+    padding-right: 60px;
+  }
+}
