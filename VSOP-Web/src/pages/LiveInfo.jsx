@@ -27,15 +27,34 @@ function LiveCard({ item }) {
   const date = item['日付'] || item['date'] || '';
   const venue = item['会場'] || item['venue'] || '';
   const detail = item['詳細'] || item['detail'] || '';
+  const flyerUrl = item['フライヤーURL'] || item['flyer'] || '';
 
   return (
     <div className={styles.card}>
       <div className={styles.badge}>UPCOMING</div>
-      <div className={styles.cardBody}>
-        <div className={styles.date}>{date}</div>
-        <h2 className={styles.title}>{title}</h2>
-        {venue && <div className={styles.venue}>{venue}</div>}
-        {detail && <p className={styles.detail}>{detail}</p>}
+      <div className={styles.cardInner}>
+        <div className={styles.cardBody}>
+          <div className={styles.date}>{date}</div>
+          <h2 className={styles.title}>{title}</h2>
+          {venue && (
+          <div className={styles.venue}>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.venueLink}
+            >
+              {venue}
+            </a>
+          </div>
+        )}
+          {detail && <p className={styles.detail}>{detail}</p>}
+        </div>
+        {flyerUrl && (
+          <a href={flyerUrl} target="_blank" rel="noopener noreferrer" className={styles.flyerLink}>
+            <img src={flyerUrl} alt="フライヤー" className={styles.flyer} />
+          </a>
+        )}
       </div>
     </div>
   );

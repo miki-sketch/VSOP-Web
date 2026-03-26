@@ -45,8 +45,54 @@
   border-radius: 3px;
 }
 
+.cardInner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
 .cardBody {
+  flex: 1;
   padding: 20px 24px;
+}
+
+.flyerLink {
+  flex-shrink: 0;
+  display: block;
+  padding: 16px 16px 16px 0;
+  align-self: center;
+}
+
+.flyer {
+  max-width: 200px;
+  max-height: 260px;
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: block;
+  transition: opacity 0.15s;
+}
+
+.flyerLink:hover .flyer {
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .cardInner {
+    flex-direction: column;
+  }
+
+  .flyerLink {
+    padding: 0 24px 16px;
+    align-self: flex-start;
+  }
+
+  .flyer {
+    max-width: 100%;
+    width: 100%;
+    max-height: none;
+  }
 }
 
 .date {
@@ -78,6 +124,17 @@
 .venue::before {
   content: '📍';
   font-size: 11px;
+}
+
+.venueLink {
+  color: var(--gold);
+  text-decoration: none;
+  transition: filter 0.15s;
+}
+
+.venueLink:hover {
+  filter: brightness(1.3);
+  text-decoration: none;
 }
 
 .detail {
