@@ -1,4 +1,5 @@
 import styles from './LiveInfo.module.css';
+import { sendLog } from '../utils/logger';
 
 export default function LiveInfo({ items, loading }) {
   if (loading) {
@@ -43,6 +44,7 @@ function LiveCard({ item }) {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.venueLink}
+              onClick={() => sendLog('click', { target: 'MAP', venue })}
             >
               {venue}
             </a>
@@ -51,7 +53,7 @@ function LiveCard({ item }) {
           {detail && <p className={styles.detail}>{detail}</p>}
         </div>
         {flyerUrl && (
-          <a href={flyerUrl} target="_blank" rel="noopener noreferrer" className={styles.flyerLink}>
+          <a href={flyerUrl} target="_blank" rel="noopener noreferrer" className={styles.flyerLink} onClick={() => sendLog('click', { target: 'Flyer', title })}>
             <img src={flyerUrl} alt="フライヤー" className={styles.flyer} />
           </a>
         )}

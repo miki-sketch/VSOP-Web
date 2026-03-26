@@ -1,4 +1,5 @@
 import styles from './Home.module.css';
+import { sendLog } from '../utils/logger';
 
 const HERO_BG = 'https://lh3.googleusercontent.com/d/1Sc8gh8BviUpeAwynhNstwDUxURPZT-Rs';
 
@@ -44,6 +45,7 @@ export default function Home({ onNavigate }) {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.heroNavBtn}
+            onClick={() => sendLog('click', { target: 'Facebook' })}
           >
             ▶ Facebook
           </a>

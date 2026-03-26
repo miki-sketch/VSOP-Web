@@ -1,4 +1,6 @@
+import { useRef, useEffect } from 'react';
 import styles from './Movie.module.css';
+import { sendLog } from '../utils/logger';
 
 function getYouTubeId(url) {
   if (!url) return null;
@@ -39,9 +41,22 @@ function VideoCard({ item }) {
   const url = item['YouTubeURL'] || item['url'] || '';
   const desc = item['説明文'] || item['description'] || '';
   const videoId = getYouTubeId(url);
+  const hovering = useRef(false);
+
+  useEffect(() => {
+    const onBlur = () => {
+      if (hovering.current) sendLog('click', { target: 'YouTube', title });
+    };
+    window.addEventListener('blur', onBlur);
+    return () => window.removeEventListener('blur', onBlur);
+  }, [title]);
 
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      onMouseEnter={() => { hovering.current = true; }}
+      onMouseLeave={() => { hovering.current = false; }}
+    >
       {videoId ? (
         <div className={styles.embedWrap}>
           <iframe

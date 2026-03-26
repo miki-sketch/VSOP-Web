@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchSheet } from './utils/csv';
 import { GIDS } from './config';
+import { sendLog } from './utils/logger';
 import Home from './pages/Home';
 import LiveInfo from './pages/LiveInfo';
 import Movie from './pages/Movie';
@@ -15,6 +16,11 @@ const NAV_ITEMS = [
 
 export default function App() {
   const [page, setPage] = useState('home');
+
+  function navigate(tabName) {
+    setPage(tabName);
+    if (tabName !== 'home') sendLog('access', { page: tabName });
+  }
   const [announces, setAnnounces] = useState([]);
   const [highlights, setHighlights] = useState([]);
   const [members, setMembers] = useState([]);
@@ -49,7 +55,7 @@ export default function App() {
               <button
                 key={item.id}
                 className={`${styles.navBtn} ${page === item.id ? styles.active : ''}`}
-                onClick={() => setPage(item.id)}
+                onClick={() => navigate(item.id)}
               >
                 {item.label}
               </button>
@@ -59,7 +65,7 @@ export default function App() {
       </header>
 
       <main className={page === 'home' ? styles.mainFull : styles.main}>
-        {page === 'home' && <Home onNavigate={setPage} />}
+        {page === 'home' && <Home onNavigate={navigate} />}
         {page === 'live' && <LiveInfo items={announces} loading={loading} />}
         {page === 'movie' && <Movie items={highlights} loading={loading} />}
         {page === 'members' && <Members items={members} loading={loading} />}

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import styles from './Members.module.css';
 import detailStyles from './MemberDetail.module.css';
+import { sendLog } from '../utils/logger';
 
 function toDriveImageUrl(url) {
   if (!url) return null;
@@ -59,7 +60,7 @@ export default function Members({ items, loading }) {
   return (
     <div className={styles.grid}>
       {shuffled.map((item, i) => (
-        <MemberCard key={i} item={item} onClick={() => setSelected(item)} />
+        <MemberCard key={i} item={item} onClick={() => { setSelected(item); sendLog('click', { target: 'MemberDetail', name: item['名前'] || '' }); }} />
       ))}
     </div>
   );
